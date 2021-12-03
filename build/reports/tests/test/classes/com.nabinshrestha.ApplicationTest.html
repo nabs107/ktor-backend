@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class com.nabinshrestha.ApplicationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class com.nabinshrestha.ApplicationTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.nabinshrestha.html">com.nabinshrestha</a> &gt; ApplicationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.445s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="testRoot"></a>
+<h3 class="failures">testRoot</h3>
+<span class="code">
+<pre>java.lang.NoSuchMethodError: java.nio.ByteBuffer.limit(I)Ljava/nio/ByteBuffer;
+	at io.ktor.utils.io.ByteBufferChannel.prepareBuffer(ByteBufferChannel.kt:231)
+	at io.ktor.utils.io.ByteBufferChannel.setupStateForWrite$ktor_io(ByteBufferChannel.kt:285)
+	at io.ktor.utils.io.ByteBufferChannel.writeAsMuchAsPossible(ByteBufferChannel.kt:3487)
+	at io.ktor.utils.io.ByteBufferChannel.writeFully$suspendImpl(ByteBufferChannel.kt:1425)
+	at io.ktor.utils.io.ByteBufferChannel.writeFully(ByteBufferChannel.kt)
+	at io.ktor.utils.io.ByteWriteChannelKt.writeFully(ByteWriteChannel.kt:152)
+	at io.ktor.server.engine.BaseApplicationResponse$respondFromBytes$3$1.invokeSuspend(BaseApplicationResponse.kt:191)
+	at ???(Coroutine boundary.?(?)
+	at io.ktor.server.engine.DefaultTransformKt$installDefaultTransformations$1.invokeSuspend(DefaultTransform.kt:35)
+	at com.nabinshrestha.plugins.RoutingKt$configureRouting$1$1.invokeSuspend(Routing.kt:13)
+	at io.ktor.routing.Routing.executeResult(Routing.kt:154)
+	at io.ktor.routing.Routing$Feature$install$1.invokeSuspend(Routing.kt:107)
+	at io.ktor.server.testing.TestApplicationEngine$callInterceptor$1.invokeSuspend(TestApplicationEngine.kt:296)
+	at io.ktor.server.testing.TestApplicationEngine$2.invokeSuspend(TestApplicationEngine.kt:50)
+	at io.ktor.server.testing.TestApplicationEngine$handleRequest$pipelineJob$1.invokeSuspend(TestApplicationEngine.kt:295)
+	at io.ktor.server.testing.TestApplicationEngine$handleRequest$1.invokeSuspend(TestApplicationEngine.kt:153)
+Caused by: java.lang.NoSuchMethodError: java.nio.ByteBuffer.limit(I)Ljava/nio/ByteBuffer;
+	at io.ktor.utils.io.ByteBufferChannel.prepareBuffer(ByteBufferChannel.kt:231)
+	at io.ktor.utils.io.ByteBufferChannel.setupStateForWrite$ktor_io(ByteBufferChannel.kt:285)
+	at io.ktor.utils.io.ByteBufferChannel.writeAsMuchAsPossible(ByteBufferChannel.kt:3487)
+	at io.ktor.utils.io.ByteBufferChannel.writeFully$suspendImpl(ByteBufferChannel.kt:1425)
+	at io.ktor.utils.io.ByteBufferChannel.writeFully(ByteBufferChannel.kt)
+	at io.ktor.utils.io.ByteWriteChannelKt.writeFully(ByteWriteChannel.kt:152)
+	at io.ktor.server.engine.BaseApplicationResponse$respondFromBytes$3$1.invokeSuspend(BaseApplicationResponse.kt:191)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.internal.DispatchedContinuationKt.resumeCancellableWith(DispatchedContinuation.kt:367)
+	at kotlinx.coroutines.intrinsics.CancellableKt.startCoroutineCancellable(Cancellable.kt:30)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.startCoroutineImpl(Builders.common.kt:192)
+	at kotlinx.coroutines.BuildersKt.startCoroutineImpl(Unknown Source)
+	at kotlinx.coroutines.AbstractCoroutine.start(AbstractCoroutine.kt:134)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:170)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at io.ktor.server.engine.BaseApplicationResponse.respondFromBytes$suspendImpl(BaseApplicationResponse.kt:190)
+	at io.ktor.server.engine.BaseApplicationResponse.respondFromBytes(BaseApplicationResponse.kt)
+	at io.ktor.server.engine.BaseApplicationResponse.respondOutgoingContent$suspendImpl(BaseApplicationResponse.kt:117)
+	at io.ktor.server.engine.BaseApplicationResponse.respondOutgoingContent(BaseApplicationResponse.kt)
+	at io.ktor.server.testing.TestApplicationResponse.respondOutgoingContent(TestApplicationResponse.kt:113)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupSendPipeline$1.invokeSuspend(BaseApplicationResponse.kt:320)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupSendPipeline$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupSendPipeline$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:248)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:116)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceedWith(SuspendFunctionGun.kt:126)
+	at io.ktor.server.engine.DefaultTransformKt$installDefaultTransformations$1.invokeSuspend(DefaultTransform.kt:35)
+	at io.ktor.server.engine.DefaultTransformKt$installDefaultTransformations$1.invoke(DefaultTransform.kt)
+	at io.ktor.server.engine.DefaultTransformKt$installDefaultTransformations$1.invoke(DefaultTransform.kt)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:248)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:116)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute(SuspendFunctionGun.kt:136)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:78)
+	at io.ktor.response.ApplicationResponseFunctionsKt.respondText(ApplicationResponseFunctions.kt:267)
+	at io.ktor.response.ApplicationResponseFunctionsKt.respondText$default(ApplicationResponseFunctions.kt:87)
+	at com.nabinshrestha.plugins.RoutingKt$configureRouting$1$1.invokeSuspend(Routing.kt:13)
+	at com.nabinshrestha.plugins.RoutingKt$configureRouting$1$1.invoke(Routing.kt)
+	at com.nabinshrestha.plugins.RoutingKt$configureRouting$1$1.invoke(Routing.kt)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:248)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:116)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute(SuspendFunctionGun.kt:136)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:78)
+	at io.ktor.routing.Routing.executeResult(Routing.kt:155)
+	at io.ktor.routing.Routing.interceptor(Routing.kt:39)
+	at io.ktor.routing.Routing$Feature$install$1.invokeSuspend(Routing.kt:107)
+	at io.ktor.routing.Routing$Feature$install$1.invoke(Routing.kt)
+	at io.ktor.routing.Routing$Feature$install$1.invoke(Routing.kt)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:248)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:116)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute(SuspendFunctionGun.kt:136)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:78)
+	at io.ktor.server.testing.TestApplicationEngine$callInterceptor$1.invokeSuspend(TestApplicationEngine.kt:296)
+	at io.ktor.server.testing.TestApplicationEngine$callInterceptor$1.invoke(TestApplicationEngine.kt)
+	at io.ktor.server.testing.TestApplicationEngine$callInterceptor$1.invoke(TestApplicationEngine.kt)
+	at io.ktor.server.testing.TestApplicationEngine$2.invokeSuspend(TestApplicationEngine.kt:50)
+	at io.ktor.server.testing.TestApplicationEngine$2.invoke(TestApplicationEngine.kt)
+	at io.ktor.server.testing.TestApplicationEngine$2.invoke(TestApplicationEngine.kt)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:248)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:116)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute(SuspendFunctionGun.kt:136)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:78)
+	at io.ktor.server.testing.TestApplicationEngine$handleRequest$pipelineJob$1.invokeSuspend(TestApplicationEngine.kt:295)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:571)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:678)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:665)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">testRoot</td>
+<td class="failures">0.445s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2021-11-19 12:12:52.255 [Test worker] INFO  ktor.test - Autoreload is disabled because the development mode is off.
+2021-11-19 12:12:52.266 [Test worker] INFO  ktor.test - Application started in 0.069 seconds.
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.1</a> at Nov 19, 2021 12:12:52 PM</p>
+</div>
+</div>
+</body>
+</html>
