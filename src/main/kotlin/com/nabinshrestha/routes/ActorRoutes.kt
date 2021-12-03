@@ -1,15 +1,16 @@
 package com.nabinshrestha.routes
 
 import com.nabinshrestha.database.*
+import com.nabinshrestha.dtos.*
 import com.nabinshrestha.models.*
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import org.jetbrains.exposed.exceptions.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 fun Route.actorRoutes() {
@@ -86,9 +87,18 @@ fun Route.actorRoutes() {
             val id = call.parameters["id"]?.toIntOrNull()
 
             id?.let {
+                var actorExists: Boolean = false
                 transaction {
-
-                    Actors.deleteWhere { Actors.id eq id }
+                    actorExists = Actors.select(exists(Actors.select { Actors.id eq id } )).count() > 0
+                    if (actorExists) {
+                        FilmActors.deleteWhere { FilmActors.actorId eq id }
+                        Actors.deleteWhere { Actors.id eq id }
+                    }
+                }
+                if (actorExists) {
+                    call.respond(status = HttpStatusCode.OK, APIModel(success = true, message = "Deleted Successfully."))
+                } else {
+                    call.respond(status = HttpStatusCode.OK, APIModel(success = true, message = "Provided id doesn't exist."))
                 }
             } ?: run {
                 call.respond(status = HttpStatusCode.BadRequest, APIModel(success = false, message = "Provide a valid id."))

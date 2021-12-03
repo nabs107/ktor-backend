@@ -9,9 +9,3 @@ data class Actor(
     val lastName: String,
     val lastUpdate: String
 )
-
-@Serializable
-data class ActorDTO(
-    val firstName: String? = null,
-    val lastName: String? = null
-)
