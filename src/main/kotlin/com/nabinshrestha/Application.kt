@@ -22,6 +22,7 @@ fun main() {
         registerAddressRoutes()
         registerCategoryRoutes()
         registerFilmActorRoutes()
+        registerFilmRoutes()
     }.start(wait = true)
 }
 
