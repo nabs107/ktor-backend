@@ -16,7 +16,7 @@ import kotlinx.serialization.json.*
 import org.jetbrains.exposed.sql.*
 
 fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
+    embeddedServer(Netty, port = 8080) {
         initDB()
         install(ContentNegotiation) {
             json(Json { ignoreUnknownKeys = true })
