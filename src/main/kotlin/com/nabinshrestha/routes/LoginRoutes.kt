@@ -21,23 +21,31 @@ fun Route.loginRoutes(audience: String, issuer: String, secret: String) {
 
         post {
             val user = call.receive<UserDTO>()
-            var verified = false
+            var userExists = false
             transaction {
-                val password = Users.select { Users.email eq user.email }.single()[Users.password]
-                val result = BCrypt.verifyer().verify(user.password.toCharArray(), password)
-                verified = result.verified
+                userExists = Users.select { Users.email eq user.email }.count() > 0
             }
-            if (verified) {
-                val token = JWT.create()
-                    .withAudience(audience)
-                    .withIssuer(issuer)
-                    .withClaim("username", user.email)
-                    .withExpiresAt(Date(System.currentTimeMillis() + 900000)) //milliseconds
-                    .sign(Algorithm.HMAC256(secret))
+            if (userExists) {
+                var verified = false
+                transaction {
+                    val password = Users.select { Users.email eq user.email }.single()[Users.password]
+                    val result = BCrypt.verifyer().verify(user.password.toCharArray(), password)
+                    verified = result.verified
+                }
+                if (verified) {
+                    val token = JWT.create()
+                        .withAudience(audience)
+                        .withIssuer(issuer)
+                        .withClaim("username", user.email)
+                        .withExpiresAt(Date(System.currentTimeMillis() + 900000)) //milliseconds
+                        .sign(Algorithm.HMAC256(secret))
 
-                call.respond(hashMapOf("token" to token))
+                    call.respond(hashMapOf("token" to token))
+                } else {
+                    call.respond(HttpStatusCode.Forbidden, APIModel(success = false, message = "Username or Password is incorrect!"))
+                }
             } else {
-                call.respond(HttpStatusCode.Forbidden, APIModel(success = false, message = "Username or Password is incorrect!"))
+                call.respond(HttpStatusCode.Found, APIModel(success = false, message = "Username or Password is incorrect!"))
             }
         }
     }
