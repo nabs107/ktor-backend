@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+    val bcryptVersion = "0.9.0"
+
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-server-netty:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
@@ -27,6 +29,9 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed:0.17.14")
     implementation("com.zaxxer:HikariCP:3.2.0")
     implementation("org.postgresql:postgresql:42.2.10")
+    implementation("io.ktor:ktor-auth:$ktor_version")
+    implementation("io.ktor:ktor-auth-jwt:$ktor_version")
+    implementation("at.favre.lib:bcrypt:$bcryptVersion")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }

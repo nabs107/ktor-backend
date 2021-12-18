@@ -4,6 +4,8 @@ import com.nabinshrestha.database.*
 import com.nabinshrestha.dtos.*
 import com.nabinshrestha.models.*
 import io.ktor.application.*
+import io.ktor.auth.*
+import io.ktor.auth.jwt.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
@@ -109,6 +111,8 @@ fun Route.actorRoutes() {
 
 fun Application.registerActorRoutes() {
     routing {
-        actorRoutes()
+        authenticate("auth-jwt") {
+            actorRoutes()
+        }
     }
 }
