@@ -11,7 +11,7 @@ plugins {
 group = "com.nabinshrestha"
 version = "0.0.1"
 application {
-    mainClass.set("com.nabinshrestha.ApplicationKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
 }
 
 repositories {
