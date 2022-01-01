@@ -14,8 +14,11 @@ import io.ktor.features.*
 import io.ktor.serialization.*
 import kotlinx.serialization.json.*
 import org.jetbrains.exposed.sql.*
+import sun.security.pkcs11.wrapper.*
 
-fun main() {
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+
+fun Application.module(testing: Boolean = false) {
     embeddedServer(Netty, port = 8080) {
         initDB()
         install(ContentNegotiation) {
