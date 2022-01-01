@@ -11,12 +11,15 @@ import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.auth.jwt.*
 import io.ktor.features.*
+import io.ktor.response.*
+import io.ktor.routing.*
 import io.ktor.serialization.*
+import io.netty.handler.codec.http.HttpHeaderDateFormat.*
 import kotlinx.serialization.json.*
 import org.jetbrains.exposed.sql.*
 import sun.security.pkcs11.wrapper.*
 
-fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module(testing: Boolean = false) {
     embeddedServer(Netty, port = 8080) {
@@ -27,30 +30,35 @@ fun Application.module(testing: Boolean = false) {
             json(Json { ignoreUnknownKeys = true })
         }
 
-        val secret = "secret"
-        val issuer = "http://0.0.0.0:8080/"
-        val audience = "http://0.0.0.0:8080/hello"
-        val myRealm = "Access to 'hello'"
+//        val secret = "secret"
+//        val issuer = "http://0.0.0.0:8080/"
+//        val audience = "http://0.0.0.0:8080/hello"
+//        val myRealm = "Access to 'hello'"
+//
+//        install(Authentication) {
+//            jwt("auth-jwt") {
+//                realm = myRealm
+//                verifier(JWT
+//                    .require(Algorithm.HMAC256(secret))
+//                    .withAudience(audience)
+//                    .withIssuer(issuer)
+//                    .build()
+//                )
+//                validate { jwtCredential ->
+//                    if (jwtCredential.payload.getClaim("username").asString() != "") {
+//                        JWTPrincipal(jwtCredential.payload)
+//                    } else {
+//                        null
+//                    }
+//                }
+//            }
+//        }
 
-        install(Authentication) {
-            jwt("auth-jwt") {
-                realm = myRealm
-                verifier(JWT
-                    .require(Algorithm.HMAC256(secret))
-                    .withAudience(audience)
-                    .withIssuer(issuer)
-                    .build()
-                )
-                validate { jwtCredential ->
-                    if (jwtCredential.payload.getClaim("username").asString() != "") {
-                        JWTPrincipal(jwtCredential.payload)
-                    } else {
-                        null
-                    }
-                }
-            }
+        get("/") {
+            call.respondText("Hello, world!")
         }
-        configureRouting()
+
+//        configureRouting()
         registerLoginRoutes()
         registerRegisterRoutes()
         registerCustomerRoutes()
