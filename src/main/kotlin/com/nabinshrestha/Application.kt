@@ -22,48 +22,50 @@ import sun.security.pkcs11.wrapper.*
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module(testing: Boolean = false) {
-    embeddedServer(Netty, port = 8080) {
-
-        initDB()
-
-        install(ContentNegotiation) {
-            json(Json { ignoreUnknownKeys = true })
-        }
-
-//        val secret = "secret"
-//        val issuer = "http://0.0.0.0:8080/"
-//        val audience = "http://0.0.0.0:8080/hello"
-//        val myRealm = "Access to 'hello'"
+//    embeddedServer(Netty, port = 8080) {
 //
-//        install(Authentication) {
-//            jwt("auth-jwt") {
-//                realm = myRealm
-//                verifier(JWT
-//                    .require(Algorithm.HMAC256(secret))
-//                    .withAudience(audience)
-//                    .withIssuer(issuer)
-//                    .build()
-//                )
-//                validate { jwtCredential ->
-//                    if (jwtCredential.payload.getClaim("username").asString() != "") {
-//                        JWTPrincipal(jwtCredential.payload)
-//                    } else {
-//                        null
-//                    }
-//                }
-//            }
-//        }
+//
+//    }.start(wait = true)
 
-//        configureRouting()
-        registerLoginRoutes()
-        registerRegisterRoutes()
-        registerCustomerRoutes()
-        registerActorRoutes()
-        registerAddressRoutes()
-        registerCategoryRoutes()
-        registerFilmActorRoutes()
-        registerFilmRoutes()
-    }.start(wait = true)
+    initDB()
+
+    install(ContentNegotiation) {
+        json(Json { ignoreUnknownKeys = true })
+    }
+
+    val secret = "secret"
+    val issuer = "http://0.0.0.0:8080/"
+    val audience = "http://0.0.0.0:8080/hello"
+    val myRealm = "Access to 'hello'"
+
+    install(Authentication) {
+        jwt("auth-jwt") {
+            realm = myRealm
+            verifier(JWT
+                .require(Algorithm.HMAC256(secret))
+                .withAudience(audience)
+                .withIssuer(issuer)
+                .build()
+            )
+            validate { jwtCredential ->
+                if (jwtCredential.payload.getClaim("username").asString() != "") {
+                    JWTPrincipal(jwtCredential.payload)
+                } else {
+                    null
+                }
+            }
+        }
+    }
+
+    configureRouting()
+    registerLoginRoutes()
+    registerRegisterRoutes()
+    registerCustomerRoutes()
+    registerActorRoutes()
+    registerAddressRoutes()
+    registerCategoryRoutes()
+    registerFilmActorRoutes()
+    registerFilmRoutes()
 }
 
 fun initDB() {
