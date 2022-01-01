@@ -20,7 +20,9 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.module(testing: Boolean = false) {
     embeddedServer(Netty, port = 8080) {
+
         initDB()
+
         install(ContentNegotiation) {
             json(Json { ignoreUnknownKeys = true })
         }
