@@ -54,10 +54,6 @@ fun Application.module(testing: Boolean = false) {
 //            }
 //        }
 
-        get("/") {
-            call.respondText("Hello, world!")
-        }
-
 //        configureRouting()
         registerLoginRoutes()
         registerRegisterRoutes()
