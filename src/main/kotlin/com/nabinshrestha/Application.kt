@@ -67,6 +67,7 @@ fun Application.module(testing: Boolean = false) {
     registerFilmActorRoutes()
     registerFilmRoutes()
     registerPromotionRoutes()
+    registerConnectWithUsRoutes()
 }
 
 fun initDB() {
